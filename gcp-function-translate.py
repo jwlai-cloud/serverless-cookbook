@@ -29,8 +29,8 @@ def sample_translate_text(
     print(f"You passed in this language {language}")
     # Display the translation for each input text provided
     for translation in response.translations:
-        print("Translated text: {}".format(translation.translated_text))
-    return "Translated text: {}".format(translation.translated_text)
+        print(f"Translated text: {translation.translated_text}")
+    return f"Translated text: {translation.translated_text}"
 
 
 def translate_test(request):
@@ -43,9 +43,9 @@ def translate_test(request):
         sentences = request_json["sentences"]
         print(entity)
         res = wikipedia.summary(entity, sentences=sentences)
-        trans = sample_translate_text(
+        return sample_translate_text(
             text=res, project_id="cloudai-194723", language=language
         )
-        return trans
+
     else:
-        return f"No Payload"
+        return "No Payload"
