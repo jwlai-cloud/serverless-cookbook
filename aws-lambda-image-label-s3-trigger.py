@@ -30,5 +30,4 @@ def lambda_handler(event, context):
         key = unquote_plus(record["s3"]["object"]["key"])
         print(f"This is my key {key}")
 
-    my_labels = label_function(bucket=bucket, name=key)
-    return my_labels
+    return label_function(bucket=bucket, name=key)
